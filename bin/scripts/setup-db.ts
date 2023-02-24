@@ -33,9 +33,7 @@ class PrestartSQL {
   }
 
   private async _connection(): Promise<void> {
-    const { database, ...config } = this._dbConfig;
-
-    this._client = new DataSource(config as DataSourceOptions);
+    this._client = new DataSource(this._dbConfig);
 
     try {
       await this._client.initialize();
