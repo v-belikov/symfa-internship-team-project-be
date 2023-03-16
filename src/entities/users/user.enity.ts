@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, TableInheritance } from 'typeorm';
 
 import { Avatar } from '@entities/avatars';
 import { UserGender, UserRole } from '@models/enum';
@@ -6,7 +6,10 @@ import { UserGender, UserRole } from '@models/enum';
 import { BaseEntity } from '../common';
 
 @Entity('user')
-export class User extends BaseEntity {
+@TableInheritance({
+  column: { type: 'enum', enum: UserRole, name: 'role' },
+})
+export class UserParent extends BaseEntity {
   @Column({ type: 'varchar', name: 'user_id', unique: true })
   userId: string;
 
@@ -77,10 +80,6 @@ export class User extends BaseEntity {
   })
   address: string;
 
-  @Column({
-    type: 'enum',
-    enum: UserRole,
-    name: 'role',
-  })
+  @Column({ type: 'enum', name: 'user_role', enum: UserRole })
   role: UserRole;
 }

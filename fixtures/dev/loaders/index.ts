@@ -1,4 +1,5 @@
 import { AvatarLoader } from './avatars';
-import { UserLoader } from './users';
+import { UserTeacherLoader } from './users';
+import { UserStudentLoader } from './users';
 
-export const DEV_LOADERS = [AvatarLoader, UserLoader];
+export const DEV_LOADERS = [AvatarLoader, UserTeacherLoader, UserStudentLoader];
