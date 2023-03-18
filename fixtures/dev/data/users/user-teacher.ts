@@ -1,6 +1,7 @@
 import { DeepPartial } from 'typeorm';
 
 import { UserParent } from '@entities/users';
+import { deafultPassword } from '@fixtures/models';
 import { UserGender, UserRole } from '@models/enum';
 
 export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
@@ -20,6 +21,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1980-01-02'),
     address: 'Bolotnaya 28',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '4fb3c988-2ff3-4c18-b3e3-bc3b4bd78c25',
@@ -37,6 +39,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1986-11-14'),
     address: 'Kabushkina 5',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '7542839a-e305-428e-b1c1-65ff6ea17943',
@@ -54,6 +57,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1970-05-08'),
     address: 'Ermaka 34',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '39a0f862-01a7-4230-8d82-07b3d5c0c33f',
@@ -71,6 +75,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1984-03-04'),
     address: 'Rechnaya 2',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: 'c2277a4f-9a7b-433e-9268-0aaf76775665',
@@ -88,6 +93,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1992-10-02'),
     address: 'Alibegova 20',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '52bccf2d-3669-4535-aa20-dd2a8af1a804',
@@ -105,6 +111,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1977-04-23'),
     address: 'Grekova 5',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '0d5d7db9-3448-4673-9088-ca8d0761c87f',
@@ -122,6 +129,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1967-10-28'),
     address: 'Nezavisimosti 60',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '4e2b2c14-8305-454e-a08d-a9391055f2dc',
@@ -139,6 +147,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1994-09-01'),
     address: 'Bratskaya 8',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '84ef1a6e-8cbb-411e-882c-edcff9a5a127',
@@ -156,6 +165,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('1979-05-02'),
     address: 'Vasnetsova 17',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
   {
     id: '4e7fada0-3ee3-48d2-a6d0-058e709944ad',
@@ -173,5 +183,6 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-01-25'),
     address: 'Esenina 40',
     role: UserRole.Teacher,
+    password: deafultPassword,
   },
 ];

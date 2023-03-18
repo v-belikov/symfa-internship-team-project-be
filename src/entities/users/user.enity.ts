@@ -82,4 +82,7 @@ export class UserParent extends BaseEntity {
 
   @Column({ type: 'enum', name: 'user_role', enum: UserRole })
   role: UserRole;
+
+  @Column({ type: 'varchar', name: 'password', length: 72 })
+  password: string;
 }

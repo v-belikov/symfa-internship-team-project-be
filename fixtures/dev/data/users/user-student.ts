@@ -1,6 +1,7 @@
 import { DeepPartial } from 'typeorm';
 
 import { UserParent } from '@entities/users';
+import { deafultPassword } from '@fixtures/models';
 import { UserGender, UserRole } from '@models/enum';
 
 export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
@@ -20,6 +21,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-01-25'),
     address: 'Lomonosova 5',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '3465b5d4-9fd4-4d8b-a871-88304d1d5b1e',
@@ -37,6 +39,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2004-02-07'),
     address: 'Aladovyh 16',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: 'd4266c12-f1f7-4ca5-bd31-deea114fe23b',
@@ -54,6 +57,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-07-30'),
     address: 'Razinskaya 1',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: 'bee82d38-ef6d-4023-a370-f09aaae3ce09',
@@ -71,6 +75,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2002-09-27'),
     address: 'Molodezhnaya 13',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '429bf69f-c4c0-473e-9667-33dc53197aab',
@@ -88,6 +93,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2002-12-30'),
     address: 'Vavilova 27',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: 'f5bb173e-2f42-476f-a648-86c5c5840f2a',
@@ -105,6 +111,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2004-08-12'),
     address: 'Detskaya 33',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '77cf7f42-5f56-43c2-adb6-30b277c5080a',
@@ -122,6 +129,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-02-05'),
     address: 'Fomina 9',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '583a8ac5-b3fa-46e3-be94-534481fa9125',
@@ -139,6 +147,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-07-21'),
     address: 'Vysokaya 10',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '454a0af8-a4c8-4c96-8eaf-427e74f620f1',
@@ -156,6 +165,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2003-12-30'),
     address: 'Kizhevatova 1',
     role: UserRole.Student,
+    password: deafultPassword,
   },
   {
     id: '54a7a57d-9862-4e9b-bff0-7b189e1c26a6',
@@ -173,5 +183,6 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     dateOfBirth: new Date('2004-01-25'),
     address: 'Vostochnaya 38',
     role: UserRole.Student,
+    password: deafultPassword,
   },
 ];

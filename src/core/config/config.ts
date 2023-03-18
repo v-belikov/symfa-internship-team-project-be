@@ -47,6 +47,10 @@ export class Config {
     return this._env.CLIENT_URL;
   }
 
+  get hashSalt(): string {
+    return this._env.HASH_SALT;
+  }
+
   get environment(): EnvironmentType {
     return this._env.NODE_ENV as EnvironmentType;
   }
