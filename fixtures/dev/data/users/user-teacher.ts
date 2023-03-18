@@ -6,7 +6,7 @@ import { UserGender, UserRole } from '@models/enum';
 export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   {
     id: '53ecdcb5-8abb-413d-b6a2-6ec1fd6947ca',
-    userId: '3',
+    userId: 'SC20001',
     avatar: {
       id: '1723b058-c217-4949-88b6-f98eb82be186',
     },
@@ -23,7 +23,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '4fb3c988-2ff3-4c18-b3e3-bc3b4bd78c25',
-    userId: '6',
+    userId: 'SC20002',
     avatar: {
       id: 'f616020d-1543-4f29-b947-e83aaa6811ca',
     },
@@ -40,7 +40,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '7542839a-e305-428e-b1c1-65ff6ea17943',
-    userId: '7',
+    userId: 'SC20003',
     avatar: {
       id: '6565fc4b-5b66-4e03-a36f-40989a1f8788',
     },
@@ -57,7 +57,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '39a0f862-01a7-4230-8d82-07b3d5c0c33f',
-    userId: '8',
+    userId: 'SC20004',
     avatar: {
       id: '5780ebef-8760-4be2-b360-13cf7ee20782',
     },
@@ -74,7 +74,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: 'c2277a4f-9a7b-433e-9268-0aaf76775665',
-    userId: '9',
+    userId: 'SC20005',
     avatar: {
       id: 'f24ff68b-fc3f-4647-8be9-0ea4cc0d4e25',
     },
@@ -91,7 +91,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '52bccf2d-3669-4535-aa20-dd2a8af1a804',
-    userId: '15',
+    userId: 'SC20006',
     avatar: {
       id: 'f24ff68b-fc3f-4647-8be9-0ea4cc0d4e25',
     },
@@ -108,7 +108,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '0d5d7db9-3448-4673-9088-ca8d0761c87f',
-    userId: '16',
+    userId: 'SC20007',
     avatar: {
       id: '6565fc4b-5b66-4e03-a36f-40989a1f8788',
     },
@@ -125,7 +125,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '4e2b2c14-8305-454e-a08d-a9391055f2dc',
-    userId: '18',
+    userId: 'SC20008',
     avatar: {
       id: 'ad24c9a2-11f9-401d-8881-523c5e663d14',
     },
@@ -142,7 +142,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '84ef1a6e-8cbb-411e-882c-edcff9a5a127',
-    userId: '19',
+    userId: 'SC20009',
     avatar: {
       id: 'cb3f7a6a-de73-4ca8-926e-b37d5bdfb531',
     },
@@ -159,7 +159,7 @@ export const TEACHER_FIXTURES: DeepPartial<UserParent>[] = [
   },
   {
     id: '4e7fada0-3ee3-48d2-a6d0-058e709944ad',
-    userId: '20',
+    userId: 'SC20010',
     avatar: {
       id: 'a527eab2-9dea-4c9c-a991-1377f5d66a17',
     },
