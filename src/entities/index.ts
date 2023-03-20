@@ -1,5 +1,6 @@
-import { IMAGE_ENTITIES } from './images';
+import { Avatar } from './avatars';
+import { USER_ENTITIES } from './users';
 
-export const ENTITIES = [...IMAGE_ENTITIES];
+export const ENTITIES = [Avatar, ...USER_ENTITIES];
 
 export const SUBSCRIBERS = [];
