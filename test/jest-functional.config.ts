@@ -15,7 +15,7 @@ export = {
     '@entities/(.*)': '<rootDir>/src/entities/$1',
     '@models/(.*)': '<rootDir>/src/models/$1',
     '@modules/(.*)': '<rootDir>/src/modules/$1',
-    '@repositories': '<rootDir>/src/repositories/index.ts',
+    '@repositories': '<rootDir>/src/repositories/courses.module.ts',
     '@shared/(.*)': '<rootDir>/src/shared/$1',
   },
   verbose: true,
