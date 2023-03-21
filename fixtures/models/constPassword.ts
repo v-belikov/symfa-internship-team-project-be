@@ -2,4 +2,4 @@ import { Config } from '@core/config';
 
 import * as bcrypt from 'bcrypt';
 
-export const deafultPassword = bcrypt.hashSync('defaultPass', +Config.get.hashSalt);
+export const defaultPassword = bcrypt.hashSync('defaultPass', +Config.get.hashSalt);
