@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { BaseEntity } from '@entities/common';
 import { CoursesLogoEntity } from '@entities/courses-logo';
@@ -14,7 +14,7 @@ export class CourseEntity extends BaseEntity {
   description: string;
 
   @ManyToOne(() => UserTeacher)
-  @JoinTable()
+  @JoinColumn()
   teacher: UserTeacher;
 
   @OneToMany(() => LessonsEntity, (lesson: LessonsEntity) => lesson.course)

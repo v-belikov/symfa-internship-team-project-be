@@ -11,17 +11,6 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '53ecdcb5-8abb-413d-b6a2-6ec1fd6947ca',
     },
-    lessons: [
-      {
-        id: 'bf8f553f-4769-4e5c-b474-4dacc08aacab',
-      },
-      {
-        id: 'f51ec145-f28c-4b3d-ab6a-c39b9d96f815',
-      },
-      {
-        id: '8d9ac641-759e-45b6-95c1-06d05ef26b90',
-      },
-    ],
     logo: {
       id: 'bee4c87a-0745-47e5-b05a-566a14144713',
     },
@@ -34,17 +23,6 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '4fb3c988-2ff3-4c18-b3e3-bc3b4bd78c25',
     },
-    lessons: [
-      {
-        id: 'f51ec145-f28c-4b3d-ab6a-c39b9d96f815',
-      },
-      {
-        id: 'f62539a1-b92b-44f7-aeb7-465430b8f8bc',
-      },
-      {
-        id: 'b1c7fe9f-5640-4058-96f0-10e274b3e9d8',
-      },
-    ],
     logo: {
       id: 'e9db95a2-5be0-4e90-9995-1be3da9b32ba',
     },
@@ -57,17 +35,6 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '7542839a-e305-428e-b1c1-65ff6ea17943',
     },
-    lessons: [
-      {
-        id: 'b1c7fe9f-5640-4058-96f0-10e274b3e9d8',
-      },
-      {
-        id: 'f51ec145-f28c-4b3d-ab6a-c39b9d96f815',
-      },
-      {
-        id: '8d9ac641-759e-45b6-95c1-06d05ef26b90',
-      },
-    ],
     logo: {
       id: 'de519f7a-a712-4390-9ad2-26b1b0184f25',
     },
@@ -80,17 +47,6 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '39a0f862-01a7-4230-8d82-07b3d5c0c33f',
     },
-    lessons: [
-      {
-        id: 'f62539a1-b92b-44f7-aeb7-465430b8f8bc',
-      },
-      {
-        id: '8d9ac641-759e-45b6-95c1-06d05ef26b90',
-      },
-      {
-        id: 'bf8f553f-4769-4e5c-b474-4dacc08aacab',
-      },
-    ],
     logo: {
       id: 'feb9ae8f-e40d-4397-9982-5078a086f40e',
     },
@@ -103,17 +59,6 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: 'c2277a4f-9a7b-433e-9268-0aaf76775665',
     },
-    lessons: [
-      {
-        id: '8d9ac641-759e-45b6-95c1-06d05ef26b90',
-      },
-      {
-        id: 'f51ec145-f28c-4b3d-ab6a-c39b9d96f815',
-      },
-      {
-        id: 'b1c7fe9f-5640-4058-96f0-10e274b3e9d8',
-      },
-    ],
     logo: {
       id: 'de519f7a-a712-4390-9ad2-26b1b0184f25',
     },

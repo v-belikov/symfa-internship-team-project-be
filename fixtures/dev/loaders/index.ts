@@ -10,6 +10,6 @@ export const DEV_LOADERS = [
   UserTeacherLoader,
   UserStudentLoader,
   CoursesLogosLoader,
-  LessonsLoader,
   CoursesLoader,
+  LessonsLoader,
 ];

@@ -11,7 +11,7 @@ export class LessonsEntity extends BaseEntity {
   @Column({ type: 'int', name: 'duration' })
   duration: number;
 
-  @Column({ type: 'varchar', unique: true })
+  @Column({ type: 'varchar' })
   materialPath: string;
 
   @ManyToOne(() => CourseEntity, (course: CourseEntity) => course.lessons)
