@@ -21,15 +21,6 @@ export class ApiGetCoursesModel {
       userId: 'SC20001',
       name: 'Maria',
       surname: 'Smirnova',
-      email: 'smirnova@gmail.com',
-      phoneNumber: '+375299088774',
-      description: 'Loves painting and novels.',
-      age: 43,
-      gender: 'female',
-      dateOfBirth: '1980-01-02',
-      address: 'Bolotnaya 28',
-      role: 'teacher',
-      password: '$2b$10$7VBHAx7OnjR34x1XLcd6F.nacfKRei/N6G47sdEXckbZW8q1reUbK',
     },
   })
   teacher: UserTeacher;
