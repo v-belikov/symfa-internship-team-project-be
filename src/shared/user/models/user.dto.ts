@@ -1,12 +1,17 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
+import { Avatar } from '@entities/avatars';
 import { UserGender, UserRole } from '@models/enum';
 
 export class UserDto {
   @IsNotEmpty()
   @IsString()
   id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  avatarId: Avatar;
 
   @IsNotEmpty()
   @IsString()

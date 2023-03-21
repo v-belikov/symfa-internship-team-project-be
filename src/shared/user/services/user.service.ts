@@ -85,6 +85,7 @@ export class UserService {
     const repository =
       updatedUser.role === UserRole.Teacher ? this._userTeacherRepository : this._userStudentRepository;
 
+    updatedUser.avatar = userData.avatarId;
     updatedUser.name = userData.name;
     updatedUser.surname = userData.surname;
     updatedUser.email = userData.email;

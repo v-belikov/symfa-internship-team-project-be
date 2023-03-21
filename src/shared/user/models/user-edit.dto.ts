@@ -1,10 +1,16 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
+import { Avatar } from '@entities/avatars';
+
 export class UserEditDto {
   @IsNotEmpty()
   @IsString()
   id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  avatarId: Avatar;
 
   @IsNotEmpty()
   @IsString()
