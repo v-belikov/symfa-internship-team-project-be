@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Config } from '@core/config';
 import { ENTITIES } from '@entities/index';
 
+import { UserModule } from './user';
+
 @Global()
 @Module({})
 export class SharedModule {
@@ -11,6 +13,7 @@ export class SharedModule {
     const sharedModules = [
       TypeOrmModule.forRoot(Config.get.typeORMOptions),
       TypeOrmModule.forFeature(ENTITIES),
+      UserModule.forRoot(),
     ];
 
     return {
