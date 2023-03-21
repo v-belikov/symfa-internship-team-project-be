@@ -49,10 +49,10 @@ export class UserParent extends BaseEntity {
 
   @Column({
     type: 'varchar',
-    name: 'discription',
+    name: 'description',
     length: 255,
   })
-  discription: string;
+  description: string;
 
   @Column({
     type: 'tinyint',
