@@ -9,7 +9,7 @@ export class CoursesService {
   constructor(@InjectRepository(CourseEntity) private _courseRepository: Repository<CourseEntity>) {}
 
   async getAllCourses() {
-    const queryBuilder = await this._courseRepository
+    const queryBuilder = this._courseRepository
       .createQueryBuilder('course')
       .select([
         'course.id',
