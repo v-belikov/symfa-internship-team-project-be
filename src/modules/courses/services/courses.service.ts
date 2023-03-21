@@ -9,7 +9,7 @@ export class CoursesService {
   constructor(@InjectRepository(CourseEntity) private _courseRepository: Repository<CourseEntity>) {}
 
   async getAllCourses() {
-    const queryBuilder = this._courseRepository
+    const queryBuilder = await this._courseRepository
       .createQueryBuilder('course')
       .select([
         'course.id',
@@ -19,12 +19,14 @@ export class CoursesService {
         'teacher.userId',
         'teacher.name',
         'teacher.surname',
+        'avatar',
         'lessons',
         'logo',
       ])
       .innerJoin('course.teacher', 'teacher')
       .innerJoin('course.lessons', 'lessons')
-      .innerJoin('course.logo', 'logo');
+      .innerJoin('course.logo', 'logo')
+      .innerJoin('teacher.avatar', 'avatar');
 
     return queryBuilder.getMany();
   }
