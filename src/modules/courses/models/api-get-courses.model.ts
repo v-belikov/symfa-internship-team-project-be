@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 import { CoursesLogoEntity } from '@entities/courses-logo';
+import { LessonsEntity } from '@entities/lessons';
 import { UserTeacher } from '@entities/users';
 
 export class ApiGetCoursesModel {
@@ -41,6 +42,8 @@ export class ApiGetCoursesModel {
       },
     ],
   })
+  lessons: LessonsEntity;
+
   @ApiProperty({
     example: {
       id: 'bee4c87a-0745-47e5-b05a-566a14144713',
