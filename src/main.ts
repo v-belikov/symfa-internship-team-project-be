@@ -9,7 +9,7 @@ import { Config } from '@core/config';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const publicPath = join(__dirname, '..', 'public');
+  const publicPath = join(__dirname, '..', '..', 'public');
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // TODO make and use your own validation pipe
