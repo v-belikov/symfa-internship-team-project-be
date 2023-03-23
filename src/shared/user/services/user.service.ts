@@ -3,72 +3,36 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Config } from '@core/config';
+import { Avatar } from '@entities/avatars';
 import { UserParent, UserStudent, UserTeacher } from '@entities/users';
 import { UserRole } from '@models/enum';
 
-import { UserDto } from '../models/user.dto';
-import { UserEditDto } from '../models/user-edit.dto';
+import { UserDto, UserEditDto } from '../models';
 
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
   constructor(
+    @InjectRepository(UserParent)
+    private _userRepository: Repository<UserParent>,
     @InjectRepository(UserStudent)
     private _userStudentRepository: Repository<UserStudent>,
     @InjectRepository(UserTeacher)
     private _userTeacherRepository: Repository<UserTeacher>,
+    @InjectRepository(Avatar)
+    private _avatarRepository: Repository<Avatar>,
   ) {}
 
-  async findOneById(id: string): Promise<UserParent | undefined> {
-    const user = await this._userStudentRepository
-      .createQueryBuilder('user')
-      .select([
-        'user.id',
-        'user.name',
-        'user.surname',
-        'user.phoneNumber',
-        'user.email',
-        'user.discription',
-        'user.age',
-        'user.dateOfBirth',
-        'user.address',
-        'user.role',
-        'user.gender',
-        'user.password',
-      ])
-      .where('user.id = :id', { id })
-      .getOne();
-
-    if (user) {
-      return user;
-    }
-
-    throw new BadRequestException('Wrong email');
-  }
-
-  async getUserIdByData(repository: any): Promise<UserParent> {
-    const queryBuilder = repository
-      .createQueryBuilder('user')
-      .addOrderBy('user.createdAt', 'DESC')
-      .select(['user.userId']);
-
-    return queryBuilder.getOne();
-  }
-
-  async create({ password: plainPassword, role, ...userData }: UserDto) {
+  async create({ password: plainPassword, role, email, ...userData }: UserDto) {
     try {
       const password = await bcrypt.hash(plainPassword, +Config.get.hashSalt);
-      const repository = role === UserRole.Teacher ? this._userTeacherRepository : this._userStudentRepository;
+      const repository = this._getRepository(role);
 
-      const lastUser = await this.getUserIdByData(repository);
+      const lastUserId = await this._getLastUserId(repository);
+      const userId = 'SC' + `${+lastUserId.slice(2) + 1}`;
 
-      const userId = await ('SC' +
-        (role === UserRole.Teacher ? '2' : '1') +
-        '00' +
-        String(Number(lastUser.userId.slice(-2)) + 1));
-
-      const user = await repository.create({ ...userData, userId, password });
+      const user = await repository.create({ ...userData, userId, email, password });
 
       await repository.save(user);
 
@@ -80,24 +44,29 @@ export class UserService {
     }
   }
 
-  async update({ ...userData }: UserEditDto) {
-    const updatedUser = await this.findOneById(userData.id);
-    const repository =
-      updatedUser.role === UserRole.Teacher ? this._userTeacherRepository : this._userStudentRepository;
+  async update(id: string, { avatarId, ...userData }: UserEditDto) {
+    await this._userRepository.update(id, { ...userData, avatar: { id: avatarId } });
+  }
 
-    updatedUser.avatar = userData.avatarId;
-    updatedUser.name = userData.name;
-    updatedUser.surname = userData.surname;
-    updatedUser.email = userData.email;
-    updatedUser.phoneNumber = userData.phoneNumber;
-    updatedUser.discription = userData.discription;
-    updatedUser.age = userData.age;
-    updatedUser.dateOfBirth = userData.dateOfBirth;
-    updatedUser.address = userData.address;
+  async _getAvatars(): Promise<any> {
+    const avatars = await this._avatarRepository
+      .createQueryBuilder('avatar')
+      .select(['avatar.id', 'avatar.avatarPath']);
 
-    console.log(updatedUser);
-    await repository.save({ ...updatedUser });
+    return avatars.getMany();
+  }
 
-    return updatedUser;
+  private _getRepository(role: UserRole): Repository<UserParent> {
+    return role === UserRole.Teacher ? this._userTeacherRepository : this._userStudentRepository;
+  }
+
+  private async _getLastUserId(repository: Repository<UserParent>): Promise<string> {
+    const queryBuilder = repository
+      .createQueryBuilder('user')
+      .addOrderBy('user.createdAt', 'DESC')
+      .select(['user.userId']);
+    const { userId } = await queryBuilder.getOne();
+
+    return userId;
   }
 }

@@ -1,16 +1,20 @@
-import { Body, Put } from '@nestjs/common';
+import { Body, HttpStatus, Param, ParseUUIDPipe, Patch } from '@nestjs/common';
+import { ApiResponse } from '@nestjs/swagger';
 
-import { UserEditDto } from '@shared/user/models/user-edit.dto';
+import { UserEditDto } from '@shared/user/models';
 
-import { Update_Controller as Controller } from '../decorators';
+import { UpdateController as Controller } from '../decorators';
 import { UpdateService } from '../services';
 
 @Controller()
 export class UpdateController {
   constructor(private _updateService: UpdateService) {}
 
-  @Put()
-  async update(@Body() user: UserEditDto) {
-    return this._updateService.updateUser(user);
+  @Patch(':id')
+  @ApiResponse({
+    status: HttpStatus.OK,
+  })
+  async update(@Param('id', ParseUUIDPipe) id: string, @Body() user: UserEditDto) {
+    return this._updateService.updateUser(id, user);
   }
 }

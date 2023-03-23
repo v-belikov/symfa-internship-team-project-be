@@ -1,3 +1,3 @@
 import { createPrefixController } from '@core/helpers';
 
-export const Register_Controller = createPrefixController('register');
+export const RegisterController = createPrefixController('register');
