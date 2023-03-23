@@ -1,3 +1,5 @@
 import { CoursesModule } from '@modules/courses/courses.module';
 
-export const APP_MODULES = [CoursesModule];
+import { AuthModule } from './auth/auth.module';
+
+export const APP_MODULES = [CoursesModule, AuthModule];
