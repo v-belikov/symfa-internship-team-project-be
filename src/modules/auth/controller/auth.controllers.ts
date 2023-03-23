@@ -8,10 +8,10 @@ import { AuthService } from '../service/service';
 
 @Controller()
 export class AuthController {
-  constructor(private _authService: AuthService) {}
+  constructor(private readonly _authService: AuthService) {}
 
   @Post('user/login')
-  async login(@Body() loginUserDto: LoginUserDto): Promise<UserResponseInterface> {
+  async login(@Body('user') loginUserDto: LoginUserDto): Promise<UserResponseInterface> {
     const user = await this._authService.login(loginUserDto);
 
     return this._authService.buildUserResponse(user);

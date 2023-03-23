@@ -10,6 +10,7 @@ import { LoginUserDto } from '../models/login.dto';
 import { UserResponseInterface } from '../models/userResponse.interface';
 
 import { compare } from 'bcrypt';
+// import { bcrypt } from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -52,11 +53,11 @@ export class AuthService {
   }
 
   generateJwt(user: UserParent): string {
-    console.log(user);
-
     return this._jwtService.sign(
       {
-        email: user.email,
+        id: user.id,
+        userName: user.name,
+        userEmail: user.email,
       },
       { secret: Config.get.hashKeyForJwtToken },
     );
