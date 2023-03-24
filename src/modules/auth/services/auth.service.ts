@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,11 +6,9 @@ import { Repository } from 'typeorm';
 import { Config } from '@core/config';
 import { UserParent } from '@entities/users';
 
-import { LoginUserDto } from '../models/login.dto';
-import { UserResponseInterface } from '../models/userResponse.interface';
+import { ApiAuthResponseModel, LoginUserDto } from '../models';
 
-import { compare } from 'bcrypt';
-// import { bcrypt } from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -20,28 +18,28 @@ export class AuthService {
     private readonly _authRepository: Repository<UserParent>,
   ) {}
 
-  async login(loginUserDto: LoginUserDto): Promise<UserParent> {
+  async login(loginUserDto: LoginUserDto): Promise<ApiAuthResponseModel> {
+    console.log('login user enter: ' + loginUserDto);
+
     const user = await this._authRepository
       .createQueryBuilder('user')
-      .select(['user.email', 'user.password'])
+      .select(['user.id', 'user.email', 'user.password'])
       .where('user.email = :email', { email: loginUserDto.email })
       .getOne();
 
-    console.log('user: ' + user);
-
     if (!user) {
-      throw new HttpException(`User doesn't exist`, HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new UnprocessableEntityException(`User doesn't exist`);
     }
 
-    const IsPasswordCorrect = await compare(loginUserDto.password, user.password);
+    const isPasswordCorrect = await bcrypt.compare(loginUserDto.password, user.password);
 
-    if (!IsPasswordCorrect) {
-      throw new HttpException(`Check your password`, HttpStatus.UNPROCESSABLE_ENTITY);
+    if (!isPasswordCorrect) {
+      throw new UnprocessableEntityException(`Check your password`);
     }
 
     delete user.password;
 
-    return user;
+    return this._buildUserResponse(user);
   }
 
   async getAllUsers(): Promise<UserParent[]> {
@@ -52,20 +50,21 @@ export class AuthService {
     });
   }
 
-  generateJwt(user: UserParent): string {
+  private _generateJwt(user: UserParent): string {
+    console.log('generateJwt = ' + user);
+
     return this._jwtService.sign(
       {
         id: user.id,
-        userName: user.name,
-        userEmail: user.email,
+        email: user.email,
       },
       { secret: Config.get.hashKeyForJwtToken },
     );
   }
 
-  buildUserResponse(user: UserParent): UserResponseInterface {
+  private _buildUserResponse(user: UserParent): ApiAuthResponseModel {
     return {
-      user: { ...user, token: this.generateJwt(user) },
+      token: this._generateJwt(user),
     };
   }
 }

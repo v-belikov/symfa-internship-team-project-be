@@ -1,1 +1,1 @@
-export * from './constPassword';
+export * from './default-password';

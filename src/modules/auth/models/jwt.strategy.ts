@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 
 import { Config } from '@core/config';
 
-import { UserResponseInterface } from './userResponse.interface';
+import { ApiAuthResponseModel } from './api-auth-response.model';
 
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
@@ -17,7 +17,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: UserResponseInterface) {
-    return { ...payload.user };
+  async validate(payload: ApiAuthResponseModel) {
+    // TODO check
+    console.log({ payload });
+
+    return { ...payload };
   }
 }

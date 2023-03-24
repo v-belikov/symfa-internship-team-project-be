@@ -7,8 +7,8 @@ import { Config } from '@core/config';
 import { UserParent } from '@entities/users';
 
 import { JwtStrategy } from './models/jwt.strategy';
-import { AUTH_CONTROLLER } from './controller';
-import { AuthService } from './service';
+import { AUTH_CONTROLLER } from './controllers';
+import { AuthService } from './services';
 
 @Module({
   imports: [
