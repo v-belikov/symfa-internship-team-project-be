@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Config } from '@core/config';
-import { Avatar } from '@entities/avatars';
 import { UserParent, UserStudent, UserTeacher } from '@entities/users';
 import { UserRole } from '@models/enum';
 
@@ -20,8 +19,6 @@ export class UserService {
     private _userStudentRepository: Repository<UserStudent>,
     @InjectRepository(UserTeacher)
     private _userTeacherRepository: Repository<UserTeacher>,
-    @InjectRepository(Avatar)
-    private _avatarRepository: Repository<Avatar>,
   ) {}
 
   async create({ password: plainPassword, role, email, ...userData }: UserDto) {
@@ -46,14 +43,6 @@ export class UserService {
 
   async update(id: string, { avatarId, ...userData }: UserEditDto) {
     await this._userRepository.update(id, { ...userData, avatar: { id: avatarId } });
-  }
-
-  async _getAvatars(): Promise<any> {
-    const avatars = await this._avatarRepository
-      .createQueryBuilder('avatar')
-      .select(['avatar.id', 'avatar.avatarPath']);
-
-    return avatars.getMany();
   }
 
   private _getRepository(role: UserRole): Repository<UserParent> {

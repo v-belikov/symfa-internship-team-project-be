@@ -1,12 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
-import { UserService } from '@shared/user';
+import { Avatar } from '@entities/avatars';
 
 @Injectable()
 export class AvatarService {
-  constructor(private _avatarRepository: UserService) {}
+  constructor(
+    @InjectRepository(Avatar)
+    private _avatarRepository: Repository<Avatar>,
+  ) {}
 
-  async getAvatars() {
-    return this._avatarRepository._getAvatars();
+  async getAvatars(): Promise<any> {
+    const avatars = await this._avatarRepository
+      .createQueryBuilder('avatar')
+      .select(['avatar.id', 'avatar.avatarPath']);
+
+    return avatars.getMany();
   }
 }
