@@ -81,4 +81,8 @@ export class Config {
       migrationsTableName: 'Migrations',
     };
   }
+
+  get hashKeyForJwtToken(): string {
+    return this._env.JWT_SECRET;
+  }
 }
