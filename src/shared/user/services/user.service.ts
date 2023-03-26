@@ -58,4 +58,14 @@ export class UserService {
 
     return userId;
   }
+
+  async _getUserById(inputId: any): Promise<UserParent> {
+    const user = this._userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.avatar', 'avatar')
+      .where('user.id = :id', { id: inputId })
+      .getOne();
+
+    return user;
+  }
 }

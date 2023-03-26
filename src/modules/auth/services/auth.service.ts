@@ -20,8 +20,7 @@ export class AuthService {
   async login(loginUserDto: LoginUserDto): Promise<ApiAuthResponseModel> {
     const user = await this._authRepository
       .createQueryBuilder('user')
-      .leftJoin('user.avatar', 'avatar')
-      .select(['user.id', 'user.name', 'avatar', 'user.email', 'user.password'])
+      .select(['user.id', 'user.email', 'user.password'])
       .where('user.email = :email', { email: loginUserDto.email })
       .getOne();
 
@@ -37,8 +36,6 @@ export class AuthService {
 
     delete user.password;
 
-    console.log(user);
-
     return this._buildUserResponse(user);
   }
 
@@ -52,26 +49,14 @@ export class AuthService {
 
   private _generateJwt(user: any): string {
     const payload = {
-      avatarPath: user.avatar.avatarPath,
-      name: user.name,
       email: user.email,
       sub: user.id,
     };
 
     return this._jwtService.sign(payload);
-
-    // return this._jwtService.sign(
-    //   {
-    //     id: user.id,
-    //     email: user.email,
-    //   },
-    //   { secret: Config.get.hashKeyForJwtToken },
-    // );
   }
 
   private _buildUserResponse(user: any): ApiAuthResponseModel {
-    console.log(user);
-
     return {
       token: this._generateJwt(user),
     };
