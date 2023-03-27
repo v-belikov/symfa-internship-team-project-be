@@ -56,6 +56,7 @@ export class UserService {
   private async _getLastUserId(repository: Repository<UserParent>): Promise<string> {
     const queryBuilder = repository
       .createQueryBuilder('user')
+      .withDeleted()
       .addOrderBy('user.createdAt', 'DESC')
       .select(['user.userId']);
     const { userId } = await queryBuilder.getOne();
