@@ -15,6 +15,8 @@ export class AuthController {
   @ApiResponse({ type: ApiAuthResponseModel })
   @Post('user/login')
   async login(@Body() loginUserDto: LoginUserDto): Promise<ApiAuthResponseModel> {
+    console.log('lll');
+
     return this._authService.login(loginUserDto);
   }
 
