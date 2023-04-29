@@ -20,7 +20,7 @@ export class DatabaseService {
     return students;
   }
 
-  async getAllTeachers(): Promise<UserStudent[]> {
+  async getAllTeachers(): Promise<UserTeacher[]> {
     const teacher = this._teacherRepository.createQueryBuilder('teacher').leftJoinAndSelect('teacher.avatar', 'avatar');
     const teachers = await teacher.getMany();
 

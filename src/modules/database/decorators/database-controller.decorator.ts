@@ -1,3 +1,3 @@
 import { createPrefixController } from '@core/helpers';
 
-export const CoursesController = createPrefixController('database');
+export const DatabasesController = createPrefixController('database');

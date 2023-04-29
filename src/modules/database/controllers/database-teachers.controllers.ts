@@ -1,10 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Get } from '@nestjs/common';
 
 import { UserTeacher } from '@entities/users';
 
+import { DatabaseTeachersController as Controller } from '../decorators';
 import { DatabaseService } from '../services';
 
-@Controller('teachers')
+@Controller()
 export class DatabaseTeachersController {
   constructor(private readonly _databaseService: DatabaseService) {}
 
