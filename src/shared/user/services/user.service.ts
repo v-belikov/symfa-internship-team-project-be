@@ -73,4 +73,20 @@ export class UserService {
 
     return user;
   }
+
+  async _findOneByEmail(inputEmail: string): Promise<UserParent | undefined> {
+    const user = await this._userRepository
+      .createQueryBuilder('user')
+      .select(['user.id', 'user.name', 'user.email', 'user.password'])
+      .where('user.email = :inputEmail', { inputEmail })
+      .getOne();
+
+    if (user) {
+      return user;
+    }
+
+    console.log(user);
+
+    throw new BadRequestException('Wrong email');
+  }
 }
