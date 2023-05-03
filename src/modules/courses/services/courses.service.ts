@@ -10,7 +10,7 @@ import { QueryGetCoursesDto } from '../models';
 export class CoursesService {
   constructor(@InjectRepository(CourseEntity) private _courseRepository: Repository<CourseEntity>) {}
 
-  async getAllCourses({ teacher }: QueryGetCoursesDto) {
+  async getAllCourses({ teacher, sort }: QueryGetCoursesDto) {
     const queryBuilder = this._courseRepository
       .createQueryBuilder('course')
       .select([
@@ -32,6 +32,10 @@ export class CoursesService {
 
     if (teacher) {
       queryBuilder.where(`CONCAT(teacher.name," ",teacher.surname) = :fullName`, { fullName: teacher });
+    }
+
+    if (sort) {
+      queryBuilder.orderBy('course.title', 'ASC');
     }
 
     return queryBuilder.getMany();

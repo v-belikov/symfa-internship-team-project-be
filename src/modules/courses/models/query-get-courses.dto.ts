@@ -6,4 +6,9 @@ export class QueryGetCoursesDto {
   @IsString()
   @ApiPropertyOptional({ name: 'teacher' })
   teacher?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ name: 'sort' })
+  sort?: string;
 }
