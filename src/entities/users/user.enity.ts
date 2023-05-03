@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, TableInheritance } from 'typeorm';
+import { Column, DeleteDateColumn, Entity, JoinColumn, ManyToOne, TableInheritance } from 'typeorm';
 
 import { Avatar } from '@entities/avatars';
 import { UserGender, UserRole } from '@models/enum';
@@ -85,4 +85,7 @@ export class UserParent extends BaseEntity {
 
   @Column({ type: 'varchar', name: 'password', length: 72, select: false })
   password: string;
+
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date;
 }
