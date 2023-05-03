@@ -157,7 +157,7 @@ export const STUDENT_FIXTURES: DeepPartial<UserParent>[] = [
     },
     name: 'Nadezhda',
     surname: 'Zhigimont',
-    email: 'zhigimont@gmail.com',
+    email: 'zhigimont.n@gmail.com',
     phoneNumber: '+375336672476',
     description: 'I like drawing and have an active lifestyle.',
     age: 19,
