@@ -1,9 +1,9 @@
-import { Controller, Get, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CoursesService } from '@modules/courses/services';
 
-import { ApiGetCoursesModel } from '../models';
+import { ApiGetCoursesModel, QueryGetCoursesDto } from '../models';
 
 @Controller('courses')
 @ApiTags('courses')
@@ -16,7 +16,17 @@ export class CoursesControllers {
     status: HttpStatus.OK,
     isArray: true,
   })
-  async getAllCourses() {
-    return this._coursesService.getAllCourses();
+  async getAllCourses(@Query() dto: QueryGetCoursesDto) {
+    return this._coursesService.getAllCourses(dto);
+  }
+
+  @Get('teachers')
+  @ApiResponse({
+    type: ApiGetCoursesModel,
+    status: HttpStatus.OK,
+    isArray: true,
+  })
+  async getTeachers() {
+    return this._coursesService.getTeachers();
   }
 }

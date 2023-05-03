@@ -1,7 +1,8 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
 
 import { BaseEntity } from '@entities/common';
 import { CourseEntity } from '@entities/courses';
+import { UserStudent } from '@entities/users';
 
 @Entity('lessons')
 export class LessonsEntity extends BaseEntity {
@@ -16,4 +17,8 @@ export class LessonsEntity extends BaseEntity {
 
   @ManyToOne(() => CourseEntity, (course: CourseEntity) => course.lessons)
   course: CourseEntity;
+
+  @ManyToMany(() => UserStudent, (student: UserStudent) => student.passLessons)
+  @JoinTable()
+  studentsPass: UserStudent[];
 }

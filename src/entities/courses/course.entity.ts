@@ -1,7 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { BaseEntity } from '@entities/common';
-import { CoursesLogoEntity } from '@entities/courses-logo';
 import { LessonsEntity } from '@entities/lessons';
 import { UserTeacher } from '@entities/users';
 
@@ -13,14 +12,13 @@ export class CourseEntity extends BaseEntity {
   @Column({ type: 'varchar', name: 'description', length: 400 })
   description: string;
 
+  @Column({ type: 'varchar', name: 'logo' })
+  logo: string;
+
   @ManyToOne(() => UserTeacher)
   @JoinColumn()
   teacher: UserTeacher;
 
   @OneToMany(() => LessonsEntity, (lesson: LessonsEntity) => lesson.course)
   lessons: LessonsEntity[];
-
-  @ManyToOne(() => CoursesLogoEntity)
-  @JoinColumn()
-  logo: CoursesLogoEntity;
 }
