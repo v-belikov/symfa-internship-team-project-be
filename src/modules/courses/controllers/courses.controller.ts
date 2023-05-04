@@ -1,6 +1,8 @@
 import { Get, HttpStatus, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
+import { CourseEntity } from '@entities/courses';
+
 import { CoursesController as Controller } from '../decorators';
 import { ApiGetCoursesModel, QueryGetCoursesDto } from '../models';
 import { CoursesService } from '../services';
@@ -16,7 +18,7 @@ export class CoursesController {
     status: HttpStatus.OK,
     isArray: true,
   })
-  async getAllCourses(@Query() dto: QueryGetCoursesDto) {
+  async getAllCourses(@Query() dto: QueryGetCoursesDto): Promise<CourseEntity[]> {
     return this._coursesService.getAllCourses(dto);
   }
 
@@ -26,7 +28,7 @@ export class CoursesController {
     status: HttpStatus.OK,
     isArray: true,
   })
-  async getTeachers() {
+  async getTeachers(): Promise<string[]> {
     return this._coursesService.getTeachers();
   }
 }

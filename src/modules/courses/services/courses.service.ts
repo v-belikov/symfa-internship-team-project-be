@@ -10,7 +10,7 @@ import { QueryGetCoursesDto } from '../models';
 export class CoursesService {
   constructor(@InjectRepository(CourseEntity) private _courseRepository: Repository<CourseEntity>) {}
 
-  async getAllCourses({ teacher, sort }: QueryGetCoursesDto) {
+  async getAllCourses({ teacher, sort }: QueryGetCoursesDto): Promise<CourseEntity[]> {
     const queryBuilder = this._courseRepository
       .createQueryBuilder('course')
       .select([
