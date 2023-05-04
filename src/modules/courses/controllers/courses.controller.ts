@@ -1,13 +1,13 @@
-import { Controller, Get, HttpStatus, Query } from '@nestjs/common';
+import { Get, HttpStatus, Query } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
-import { CoursesService } from '@modules/courses/services';
-
+import { CoursesController as Controller } from '../decorators';
 import { ApiGetCoursesModel, QueryGetCoursesDto } from '../models';
+import { CoursesService } from '../services';
 
-@Controller('courses')
+@Controller()
 @ApiTags('courses')
-export class CoursesControllers {
+export class CoursesController {
   constructor(private readonly _coursesService: CoursesService) {}
 
   @Get('all')
