@@ -45,6 +45,10 @@ export class UserService {
     await this._userRepository.update(id, { ...userData, avatar: { id: avatarId } });
   }
 
+  async remove(id: string) {
+    await this._userRepository.softDelete(id);
+  }
+
   private _getRepository(role: UserRole): Repository<UserParent> {
     return role === UserRole.Teacher ? this._userTeacherRepository : this._userStudentRepository;
   }
@@ -52,6 +56,7 @@ export class UserService {
   private async _getLastUserId(repository: Repository<UserParent>): Promise<string> {
     const queryBuilder = repository
       .createQueryBuilder('user')
+      .withDeleted()
       .addOrderBy('user.createdAt', 'DESC')
       .select(['user.userId']);
     const { userId } = await queryBuilder.getOne();

@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class Migration1682691799474 implements MigrationInterface {
-  name = 'Migration1682691799474';
+export class Migration1683188306356 implements MigrationInterface {
+  name = 'Migration1683188306356';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
@@ -14,7 +14,7 @@ export class Migration1682691799474 implements MigrationInterface {
       `CREATE TABLE \`avatar\` (\`id\` varchar(36) NOT NULL, \`createdAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), \`updatedAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), \`avatar_path\` varchar(255) NOT NULL, UNIQUE INDEX \`IDX_90571a93f3925a3780aecc94d0\` (\`avatar_path\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
     );
     await queryRunner.query(
-      `CREATE TABLE \`user\` (\`id\` varchar(36) NOT NULL, \`createdAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), \`updatedAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), \`user_id\` varchar(255) NOT NULL, \`name\` varchar(20) NOT NULL, \`surname\` varchar(20) NOT NULL, \`email\` varchar(40) NOT NULL, \`phone_number\` varchar(40) NOT NULL, \`description\` varchar(255) NOT NULL, \`age\` tinyint NOT NULL, \`gender\` enum ('male', 'female') NOT NULL, \`date_of_birth\` date NOT NULL, \`address\` varchar(255) NOT NULL, \`user_role\` enum ('teacher', 'student') NOT NULL, \`password\` varchar(72) NOT NULL, \`avatarId\` varchar(36) NULL, UNIQUE INDEX \`IDX_758b8ce7c18b9d347461b30228\` (\`user_id\`), UNIQUE INDEX \`IDX_e12875dfb3b1d92d7d7c5377e2\` (\`email\`), UNIQUE INDEX \`IDX_01eea41349b6c9275aec646eee\` (\`phone_number\`), INDEX \`IDX_da280e30feaccd83853e3b8b1e\` (\`user_role\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
+      `CREATE TABLE \`user\` (\`id\` varchar(36) NOT NULL, \`createdAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), \`updatedAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), \`user_id\` varchar(255) NOT NULL, \`name\` varchar(20) NOT NULL, \`surname\` varchar(20) NOT NULL, \`email\` varchar(40) NOT NULL, \`phone_number\` varchar(40) NOT NULL, \`description\` varchar(255) NOT NULL, \`age\` tinyint NOT NULL, \`gender\` enum ('male', 'female') NOT NULL, \`date_of_birth\` date NOT NULL, \`address\` varchar(255) NOT NULL, \`user_role\` enum ('teacher', 'student') NOT NULL, \`password\` varchar(72) NOT NULL, \`deleted_at\` datetime(6) NULL, \`avatarId\` varchar(36) NULL, UNIQUE INDEX \`IDX_758b8ce7c18b9d347461b30228\` (\`user_id\`), UNIQUE INDEX \`IDX_e12875dfb3b1d92d7d7c5377e2\` (\`email\`), UNIQUE INDEX \`IDX_01eea41349b6c9275aec646eee\` (\`phone_number\`), INDEX \`IDX_da280e30feaccd83853e3b8b1e\` (\`user_role\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
     );
     await queryRunner.query(
       `CREATE TABLE \`courses\` (\`id\` varchar(36) NOT NULL, \`createdAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), \`updatedAt\` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), \`title\` varchar(255) NOT NULL, \`description\` varchar(400) NOT NULL, \`teacherId\` varchar(36) NULL, \`logoId\` varchar(36) NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
