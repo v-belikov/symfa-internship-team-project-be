@@ -11,9 +11,7 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '53ecdcb5-8abb-413d-b6a2-6ec1fd6947ca',
     },
-    logo: {
-      id: 'bee4c87a-0745-47e5-b05a-566a14144713',
-    },
+    logo: 'images/courses-logos/logo1.jpg',
   },
   {
     id: '394db5cc-005f-45f4-b179-a7f6239039b3',
@@ -23,9 +21,7 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '4fb3c988-2ff3-4c18-b3e3-bc3b4bd78c25',
     },
-    logo: {
-      id: 'e9db95a2-5be0-4e90-9995-1be3da9b32ba',
-    },
+    logo: 'images/courses-logos/logo2.jpg',
   },
   {
     id: 'd3144c68-84ac-4e27-86b1-6e625cad2b3e',
@@ -35,9 +31,7 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '7542839a-e305-428e-b1c1-65ff6ea17943',
     },
-    logo: {
-      id: 'de519f7a-a712-4390-9ad2-26b1b0184f25',
-    },
+    logo: 'images/courses-logos/logo3.jpg',
   },
   {
     id: '431556fa-d0a4-4b8b-a4fe-be89bc499a98',
@@ -47,9 +41,7 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: '39a0f862-01a7-4230-8d82-07b3d5c0c33f',
     },
-    logo: {
-      id: 'feb9ae8f-e40d-4397-9982-5078a086f40e',
-    },
+    logo: 'images/courses-logos/logo4.jpg',
   },
   {
     id: '087527c5-12b9-4fef-b0d9-13a2cd1e7589',
@@ -59,8 +51,16 @@ export const COURSES_FIXTURES: DeepPartial<CourseEntity>[] = [
     teacher: {
       id: 'c2277a4f-9a7b-433e-9268-0aaf76775665',
     },
-    logo: {
-      id: 'de519f7a-a712-4390-9ad2-26b1b0184f25',
+    logo: 'images/courses-logos/logo3.jpg',
+  },
+  {
+    id: '087527c5-12b9-4fef-b0d9-26b1b0184f25',
+    title: 'SDFsdfcvc',
+    description:
+      "App design is the look and feel of a mobile application. This includes all of the visual elements and interactive elements that impact how the app functions. Mobile app design combines two concepts—UI and UX. The user interface (UI) encompasses the app's look and feel.",
+    teacher: {
+      id: 'c2277a4f-9a7b-433e-9268-0aaf76775665',
     },
+    logo: 'images/courses-logos/logo3.jpg',
   },
 ];
