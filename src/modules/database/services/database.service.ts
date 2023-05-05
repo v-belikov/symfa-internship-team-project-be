@@ -4,6 +4,8 @@ import { Repository } from 'typeorm';
 
 import { UserStudent, UserTeacher } from '@entities/users';
 
+import { FilterUserDto } from '../models';
+
 @Injectable()
 export class DatabaseService {
   constructor(
@@ -13,15 +15,39 @@ export class DatabaseService {
     private _teacherRepository: Repository<UserTeacher>,
   ) {}
 
-  async getAllStudents(): Promise<UserStudent[]> {
-    const student = this._userRepository.createQueryBuilder('student').leftJoinAndSelect('student.avatar', 'avatar');
+  async getAllStudents(data: FilterUserDto): Promise<UserStudent[]> {
+    console.log(data);
+    const student = this._userRepository
+      .createQueryBuilder('student')
+      .select([
+        'student.id',
+        'student.name',
+        'student.surname',
+        'student.userId',
+        'student.gender',
+        'student.age',
+        'student.email',
+      ])
+      .leftJoinAndSelect('student.avatar', 'avatar');
     const students = await student.getMany();
 
     return students;
   }
 
-  async getAllTeachers(): Promise<UserTeacher[]> {
-    const teacher = this._teacherRepository.createQueryBuilder('teacher').leftJoinAndSelect('teacher.avatar', 'avatar');
+  async getAllTeachers(data: FilterUserDto): Promise<UserTeacher[]> {
+    console.log(data);
+    const teacher = this._teacherRepository
+      .createQueryBuilder('teacher')
+      .select([
+        'teacher.id',
+        'teacher.name',
+        'teacher.surname',
+        'teacher.userId',
+        'teacher.gender',
+        'teacher.age',
+        'teacher.email',
+      ])
+      .leftJoinAndSelect('teacher.avatar', 'avatar');
     const teachers = await teacher.getMany();
 
     return teachers;

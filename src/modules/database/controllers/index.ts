@@ -1,4 +1,4 @@
-import { DatabaseStudentsController } from './database-students.controllers';
-import { DatabaseTeachersController } from './database-teachers.controllers';
+import { DatabaseStudentsController } from './database-students.controller';
+import { DatabaseTeachersController } from './database-teachers.controller';
 
 export const DATABASE_CONTROLLER = [DatabaseStudentsController, DatabaseTeachersController];
